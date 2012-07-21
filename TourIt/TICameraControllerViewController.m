@@ -20,9 +20,9 @@
 
 @end
 
-@implementation TICameraControllerViewController
-@synthesize titleField;
-@synthesize detailsField;
+@implementation TICameraControllerViewController {
+    bool cameraHasPopped;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,6 +35,47 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.titleField becomeFirstResponder];
+    cameraHasPopped = NO;
+    
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    
+    if (!cameraHasPopped) {
+       [self popCameraUI];
+        cameraHasPopped = YES;
+    }
+    
+}
+
+- (BOOL) startCameraControllerFromViewController: (UIViewController*) controller
+                                   usingDelegate: (id <UIImagePickerControllerDelegate,
+                                                   UINavigationControllerDelegate>) delegate {
+    
+    if (([UIImagePickerController isSourceTypeAvailable:
+          UIImagePickerControllerSourceTypeCamera] == NO)
+        || (delegate == nil)
+        || (controller == nil))
+        return NO;
+    
+    UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
+    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    // Displays a control that allows the user to choose picture or
+    // movie capture, if both are available:
+    cameraUI.allowsEditing = NO;
+    cameraUI.delegate = delegate;
+    
+    [controller presentViewController:cameraUI animated:YES completion:NULL];
+    
+    return YES;
+}
+
+-(void) popCameraUI {
+    
+    [self startCameraControllerFromViewController: self
+                                    usingDelegate: self];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,6 +84,7 @@
 }
 
 - (IBAction)retakeImage:(id)sender {
+    [self popCameraUI];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -68,6 +110,25 @@
     }
     
     return YES;
+
+- (IBAction)acceptImage:(id)sender {
+
+}
+
+// For responding to the user tapping Cancel.
+- (void) imagePickerControllerDidCancel: (UIImagePickerController *) picker {
+    
+    [[picker parentViewController] dismissModalViewControllerAnimated: YES];
+
+}
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    [self dismissModalViewControllerAnimated:YES];  
+    
+    UIImage *capturedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    ImageView.image = capturedImage;
 }
 
 @end
