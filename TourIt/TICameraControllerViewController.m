@@ -12,7 +12,9 @@
 
 @end
 
-@implementation TICameraControllerViewController
+@implementation TICameraControllerViewController {
+    bool cameraHasPopped;
+}
 
 @synthesize ImageView;
 
@@ -24,13 +26,19 @@
     return self;
 }
 
-- (void) viewDidLoad{
+- (void) viewDidLoad {
     [super viewDidLoad];
+    cameraHasPopped = NO;
     
 }
 
 -(void) viewDidAppear:(BOOL)animated {
-    [self popCameraUI];
+    
+    if (!cameraHasPopped) {
+       [self popCameraUI];
+        cameraHasPopped = YES;
+    }
+    
 }
 
 - (BOOL) startCameraControllerFromViewController: (UIViewController*) controller
@@ -48,10 +56,6 @@
     
     // Displays a control that allows the user to choose picture or
     // movie capture, if both are available:
-    cameraUI.mediaTypes =
-    [UIImagePickerController availableMediaTypesForSourceType:
-     UIImagePickerControllerSourceTypeCamera];
-    
     cameraUI.allowsEditing = NO;
     cameraUI.delegate = delegate;
     
@@ -73,11 +77,27 @@
 }
 
 - (IBAction)retakeImage:(id)sender {
-
+    [self popCameraUI];
 }
 
 - (IBAction)acceptImage:(id)sender {
 
+}
+
+// For responding to the user tapping Cancel.
+- (void) imagePickerControllerDidCancel: (UIImagePickerController *) picker {
+    
+    [[picker parentViewController] dismissModalViewControllerAnimated: YES];
+
+}
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    [self dismissModalViewControllerAnimated:YES];  
+    
+    UIImage *capturedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    ImageView.image = capturedImage;
 }
 
 @end
