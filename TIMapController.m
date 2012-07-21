@@ -8,6 +8,8 @@
 
 #import "TIMapController.h"
 
+#import <MapKit/MapKit.h>
+
 @interface TIMapController ()
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 

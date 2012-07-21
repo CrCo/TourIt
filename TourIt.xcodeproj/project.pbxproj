@@ -22,6 +22,7 @@
 		3764051415BB2D0700C8FA8E /* TourItTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3764051315BB2D0700C8FA8E /* TourItTests.m */; };
 		3764051F15BB2DD100C8FA8E /* TICameraControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3764051E15BB2DD100C8FA8E /* TICameraControllerViewController.m */; };
 		3764052215BB336000C8FA8E /* TIMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3764052115BB336000C8FA8E /* TIMapController.m */; };
+		3764052415BB33E400C8FA8E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3764052315BB33E400C8FA8E /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		3764051E15BB2DD100C8FA8E /* TICameraControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TICameraControllerViewController.m; sourceTree = "<group>"; };
 		3764052015BB336000C8FA8E /* TIMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TIMapController.h; path = ../TIMapController.h; sourceTree = "<group>"; };
 		3764052115BB336000C8FA8E /* TIMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TIMapController.m; path = ../TIMapController.m; sourceTree = "<group>"; };
+		3764052315BB33E400C8FA8E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3764052415BB33E400C8FA8E /* MapKit.framework in Frameworks */,
 				376404E915BB2D0700C8FA8E /* UIKit.framework in Frameworks */,
 				376404EB15BB2D0700C8FA8E /* Foundation.framework in Frameworks */,
 				376404ED15BB2D0700C8FA8E /* CoreGraphics.framework in Frameworks */,
@@ -87,6 +90,7 @@
 		376404D915BB2D0600C8FA8E = {
 			isa = PBXGroup;
 			children = (
+				3764052315BB33E400C8FA8E /* MapKit.framework */,
 				376404EE15BB2D0700C8FA8E /* TourIt */,
 				3764050C15BB2D0700C8FA8E /* TourItTests */,
 				376404E715BB2D0700C8FA8E /* Frameworks */,
