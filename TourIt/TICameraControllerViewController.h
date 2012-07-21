@@ -1,5 +1,5 @@
 //
-//  TIViewController.h
+//  TICameraControllerViewController.h
 //  TourIt
 //
 //  Created by Stephen Visser on 12-07-21.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TIViewController : UITableViewController
+@interface TICameraControllerViewController : UIViewController
 
 @end

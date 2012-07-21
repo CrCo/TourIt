@@ -20,6 +20,7 @@
 		3764050915BB2D0700C8FA8E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376404EA15BB2D0700C8FA8E /* Foundation.framework */; };
 		3764051115BB2D0700C8FA8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3764050F15BB2D0700C8FA8E /* InfoPlist.strings */; };
 		3764051415BB2D0700C8FA8E /* TourItTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3764051315BB2D0700C8FA8E /* TourItTests.m */; };
+		3764051F15BB2DD100C8FA8E /* TICameraControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3764051E15BB2DD100C8FA8E /* TICameraControllerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		3764051015BB2D0700C8FA8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3764051215BB2D0700C8FA8E /* TourItTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TourItTests.h; sourceTree = "<group>"; };
 		3764051315BB2D0700C8FA8E /* TourItTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TourItTests.m; sourceTree = "<group>"; };
+		3764051D15BB2DD100C8FA8E /* TICameraControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TICameraControllerViewController.h; sourceTree = "<group>"; };
+		3764051E15BB2DD100C8FA8E /* TICameraControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TICameraControllerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				376404FD15BB2D0700C8FA8E /* TIViewController.h */,
 				376404FE15BB2D0700C8FA8E /* TIViewController.m */,
 				376404EF15BB2D0700C8FA8E /* Supporting Files */,
+				3764051D15BB2DD100C8FA8E /* TICameraControllerViewController.h */,
+				3764051E15BB2DD100C8FA8E /* TICameraControllerViewController.m */,
 			);
 			path = TourIt;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 				376404F515BB2D0700C8FA8E /* main.m in Sources */,
 				376404F915BB2D0700C8FA8E /* TIAppDelegate.m in Sources */,
 				376404FF15BB2D0700C8FA8E /* TIViewController.m in Sources */,
+				3764051F15BB2DD100C8FA8E /* TICameraControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
