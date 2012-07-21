@@ -7,26 +7,38 @@
 //
 
 #import "TIViewController.h"
-
-
-// FIXME: Dummy data 
-static NSArray *dummyData;
+#import "TIMapController.h"
+#import <Parse/Parse.h>
 
 @interface TIViewController ()
+
+@property (nonatomic, strong) NSArray *populars;
 
 @end
 
 @implementation TIViewController
 
-+ (void)initialize
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    dummyData = @[@"Dragons", @"Celebrities", @"Brett's Children"];
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+    }
+    return self;
+}
+
+- (void) setPopularPOIs: (NSArray *) pois
+{
+    self.populars = pois;
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"PopularPOI"];
+    query.limit = 10;
+    [query findObjectsInBackgroundWithTarget:self selector:@selector(setPopularPOIs:)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,7 +68,7 @@ static NSArray *dummyData;
 {
     if (section)
     {
-        return [dummyData count];
+        return [self.populars count];
     }
     else
     {
@@ -69,7 +81,7 @@ static NSArray *dummyData;
     if (indexPath.section)
     {
         UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"map" forIndexPath:indexPath];
-        cell.textLabel.text = dummyData[indexPath.row];
+        cell.textLabel.text = self.populars[indexPath.row][@"name"];
         return cell;
     }
     else
@@ -77,6 +89,13 @@ static NSArray *dummyData;
         UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"tag" forIndexPath:indexPath];
         cell.textLabel.text = @"Map, yo!";
         return cell;
+    }
+}
+
+ -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[TIMapController class]])
+    {
     }
 }
 

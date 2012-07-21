@@ -23,6 +23,14 @@
 		3764051F15BB2DD100C8FA8E /* TICameraControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3764051E15BB2DD100C8FA8E /* TICameraControllerViewController.m */; };
 		3764052215BB336000C8FA8E /* TIMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3764052115BB336000C8FA8E /* TIMapController.m */; };
 		3764052415BB33E400C8FA8E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3764052315BB33E400C8FA8E /* MapKit.framework */; };
+		3764054D15BB36A500C8FA8E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3764054C15BB36A500C8FA8E /* Parse.framework */; };
+		3764054F15BB36CA00C8FA8E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3764054E15BB36CA00C8FA8E /* AudioToolbox.framework */; };
+		3764055115BB36D200C8FA8E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3764055015BB36D200C8FA8E /* CFNetwork.framework */; };
+		3764055315BB36DE00C8FA8E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3764055215BB36DE00C8FA8E /* SystemConfiguration.framework */; };
+		3764055515BB36E700C8FA8E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3764055415BB36E700C8FA8E /* MobileCoreServices.framework */; };
+		3764055715BB36F900C8FA8E /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3764055615BB36F900C8FA8E /* libz.1.1.3.dylib */; };
+		3764055915BB370600C8FA8E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3764055815BB370600C8FA8E /* QuartzCore.framework */; };
+		3764055B15BB370C00C8FA8E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3764055A15BB370C00C8FA8E /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +68,14 @@
 		3764052015BB336000C8FA8E /* TIMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TIMapController.h; path = ../TIMapController.h; sourceTree = "<group>"; };
 		3764052115BB336000C8FA8E /* TIMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TIMapController.m; path = ../TIMapController.m; sourceTree = "<group>"; };
 		3764052315BB33E400C8FA8E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3764054C15BB36A500C8FA8E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		3764054E15BB36CA00C8FA8E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3764055015BB36D200C8FA8E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		3764055215BB36DE00C8FA8E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3764055415BB36E700C8FA8E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		3764055615BB36F900C8FA8E /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		3764055815BB370600C8FA8E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3764055A15BB370C00C8FA8E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,10 +83,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3764055B15BB370C00C8FA8E /* Security.framework in Frameworks */,
+				3764055915BB370600C8FA8E /* QuartzCore.framework in Frameworks */,
+				3764055715BB36F900C8FA8E /* libz.1.1.3.dylib in Frameworks */,
+				3764055515BB36E700C8FA8E /* MobileCoreServices.framework in Frameworks */,
+				3764055315BB36DE00C8FA8E /* SystemConfiguration.framework in Frameworks */,
+				3764055115BB36D200C8FA8E /* CFNetwork.framework in Frameworks */,
+				3764054F15BB36CA00C8FA8E /* AudioToolbox.framework in Frameworks */,
 				3764052415BB33E400C8FA8E /* MapKit.framework in Frameworks */,
 				376404E915BB2D0700C8FA8E /* UIKit.framework in Frameworks */,
 				376404EB15BB2D0700C8FA8E /* Foundation.framework in Frameworks */,
 				376404ED15BB2D0700C8FA8E /* CoreGraphics.framework in Frameworks */,
+				3764054D15BB36A500C8FA8E /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +114,6 @@
 		376404D915BB2D0600C8FA8E = {
 			isa = PBXGroup;
 			children = (
-				3764052315BB33E400C8FA8E /* MapKit.framework */,
 				376404EE15BB2D0700C8FA8E /* TourIt */,
 				3764050C15BB2D0700C8FA8E /* TourItTests */,
 				376404E715BB2D0700C8FA8E /* Frameworks */,
@@ -110,6 +133,15 @@
 		376404E715BB2D0700C8FA8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3764055A15BB370C00C8FA8E /* Security.framework */,
+				3764055815BB370600C8FA8E /* QuartzCore.framework */,
+				3764055615BB36F900C8FA8E /* libz.1.1.3.dylib */,
+				3764055415BB36E700C8FA8E /* MobileCoreServices.framework */,
+				3764055215BB36DE00C8FA8E /* SystemConfiguration.framework */,
+				3764055015BB36D200C8FA8E /* CFNetwork.framework */,
+				3764054E15BB36CA00C8FA8E /* AudioToolbox.framework */,
+				3764054C15BB36A500C8FA8E /* Parse.framework */,
+				3764052315BB33E400C8FA8E /* MapKit.framework */,
 				376404E815BB2D0700C8FA8E /* UIKit.framework */,
 				376404EA15BB2D0700C8FA8E /* Foundation.framework */,
 				376404EC15BB2D0700C8FA8E /* CoreGraphics.framework */,
@@ -377,9 +409,17 @@
 		3764051815BB2D0700C8FA8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TourIt/TourIt-Prefix.pch";
 				INFOPLIST_FILE = "TourIt/TourIt-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/1.0.59\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -388,9 +428,17 @@
 		3764051915BB2D0700C8FA8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TourIt/TourIt-Prefix.pch";
 				INFOPLIST_FILE = "TourIt/TourIt-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/1.0.59\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
