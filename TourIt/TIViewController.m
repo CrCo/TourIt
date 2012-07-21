@@ -13,6 +13,8 @@
 @interface TIViewController ()
 
 @property (nonatomic, strong) NSArray *populars;
+@property (nonatomic, strong) CLLocationManager *manager;
+@property (nonatomic) CLLocationCoordinate2D bestGuess;
 
 @end
 
@@ -22,6 +24,9 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        self.manager = [[CLLocationManager alloc] init];
+        self.manager.delegate = self;
+        [self.manager startMonitoringSignificantLocationChanges];
     }
     return self;
 }
@@ -36,7 +41,7 @@
 {
     [super viewDidLoad];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"PopularPOI"];
+    PFQuery *query = [PFQuery queryWithClassName:@"PointOfInterest"];
     query.limit = 10;
     [query findObjectsInBackgroundWithTarget:self selector:@selector(setPopularPOIs:)];
 }
@@ -81,7 +86,7 @@
     if (indexPath.section)
     {
         UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"map" forIndexPath:indexPath];
-        cell.textLabel.text = self.populars[indexPath.row][@"name"];
+        cell.textLabel.text = self.populars[indexPath.row][@"title"];
         return cell;
     }
     else
@@ -91,12 +96,32 @@
         return cell;
     }
 }
+- (void)camera:(TICameraControllerViewController *)controller didCreatePOI:(TIPointOfInterest *)point
+{
+    point.location = self.bestGuess;
+    [point save];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)cameraDidCancel:(TICameraControllerViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];    
+}
 
  -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.destinationViewController isKindOfClass:[TIMapController class]])
     {
     }
+    else if ([segue.destinationViewController isKindOfClass:[TICameraControllerViewController class]])
+    {
+        ((TICameraControllerViewController *)segue.destinationViewController).delegate = self;
+    }
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    self.bestGuess = ((CLLocation*)locations.lastObject).coordinate;
 }
 
 @end

@@ -7,10 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TIPointOfInterest.h"
 
-@interface TICameraControllerViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIImageView *ImageView;
-- (IBAction)AcceptImage:(id)sender;
-- (IBAction)RetakeImage:(id)sender;
+@class TICameraControllerViewController;
+
+@protocol TICameraControllerViewControllerDelegate <NSObject>
+
+- (void)cameraDidCancel: (TICameraControllerViewController *) controller;
+- (void)camera: (TICameraControllerViewController *) controller didCreatePOI: (TIPointOfInterest *) point;
+
+@end
+
+@interface TICameraControllerViewController : UIViewController <UITextViewDelegate>
+
+@property (nonatomic, weak) id<TICameraControllerViewControllerDelegate> delegate;
+@property (nonatomic, strong) TIPointOfInterest *poi;
 
 @end

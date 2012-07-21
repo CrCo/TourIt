@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface TIPointOfInterest : NSObject
+
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *details;
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic) CLLocationCoordinate2D location;
+
+- (void) save;
 
 @end
