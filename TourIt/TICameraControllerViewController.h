@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface TICameraControllerViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIImageView *ImageView;
+- (IBAction)AcceptImage:(id)sender;
+- (IBAction)RetakeImage:(id)sender;
 
 @end
