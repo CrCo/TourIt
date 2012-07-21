@@ -21,6 +21,7 @@
 		3764051115BB2D0700C8FA8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3764050F15BB2D0700C8FA8E /* InfoPlist.strings */; };
 		3764051415BB2D0700C8FA8E /* TourItTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3764051315BB2D0700C8FA8E /* TourItTests.m */; };
 		3764051F15BB2DD100C8FA8E /* TICameraControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3764051E15BB2DD100C8FA8E /* TICameraControllerViewController.m */; };
+		3764052215BB336000C8FA8E /* TIMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3764052115BB336000C8FA8E /* TIMapController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		3764051315BB2D0700C8FA8E /* TourItTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TourItTests.m; sourceTree = "<group>"; };
 		3764051D15BB2DD100C8FA8E /* TICameraControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TICameraControllerViewController.h; sourceTree = "<group>"; };
 		3764051E15BB2DD100C8FA8E /* TICameraControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TICameraControllerViewController.m; sourceTree = "<group>"; };
+		3764052015BB336000C8FA8E /* TIMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TIMapController.h; path = ../TIMapController.h; sourceTree = "<group>"; };
+		3764052115BB336000C8FA8E /* TIMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TIMapController.m; path = ../TIMapController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 		376404EE15BB2D0700C8FA8E /* TourIt */ = {
 			isa = PBXGroup;
 			children = (
+				3764052015BB336000C8FA8E /* TIMapController.h */,
+				3764052115BB336000C8FA8E /* TIMapController.m */,
 				376404F715BB2D0700C8FA8E /* TIAppDelegate.h */,
 				376404F815BB2D0700C8FA8E /* TIAppDelegate.m */,
 				376404FA15BB2D0700C8FA8E /* MainStoryboard.storyboard */,
@@ -268,6 +273,7 @@
 				376404F915BB2D0700C8FA8E /* TIAppDelegate.m in Sources */,
 				376404FF15BB2D0700C8FA8E /* TIViewController.m in Sources */,
 				3764051F15BB2DD100C8FA8E /* TICameraControllerViewController.m in Sources */,
+				3764052215BB336000C8FA8E /* TIMapController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
