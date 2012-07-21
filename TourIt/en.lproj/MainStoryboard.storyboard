@@ -108,7 +108,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="RetakeImage:" destination="nRo-Ag-cvh" eventType="touchUpInside" id="5m1-UR-DrC"/>
+                                    <action selector="retakeImage:" destination="nRo-Ag-cvh" eventType="touchUpInside" id="bEq-rX-Hem"/>
                                 </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" hasAttributedTitle="NO" lineBreakMode="middleTruncation" id="cyn-Qi-NKX">
@@ -121,7 +121,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="AcceptImage:" destination="nRo-Ag-cvh" eventType="touchUpInside" id="pfU-nA-Dc0"/>
+                                    <action selector="acceptImage:" destination="nRo-Ag-cvh" eventType="touchUpInside" id="I7N-8i-D5q"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -137,8 +137,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ImageView" destination="7YC-fh-msm" id="AJm-h5-lGG"/>
-                        <outlet property="RetakeImage" destination="66L-R5-XPG" id="0ge-Ee-gKR"/>
+                        <outlet property="ImageView" destination="7YC-fh-msm" id="UPt-j0-jhz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzB-JA-Iqs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -173,6 +172,8 @@
             <relationships>
                 <relationship kind="action" name="AcceptImage:"/>
                 <relationship kind="action" name="RetakeImage:"/>
+                <relationship kind="action" name="acceptImage:"/>
+                <relationship kind="action" name="retakeImage:"/>
                 <relationship kind="outlet" name="ImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>

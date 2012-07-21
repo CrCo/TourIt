@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TICameraControllerViewController : UIViewController
+@interface TICameraControllerViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
 @property (strong, nonatomic) IBOutlet UIImageView *ImageView;
-- (IBAction)AcceptImage:(id)sender;
-- (IBAction)RetakeImage:(id)sender;
+
+- (IBAction)retakeImage:(id)sender;
+- (IBAction)acceptImage:(id)sender;
 
 @end

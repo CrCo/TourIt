@@ -24,17 +24,47 @@
     return self;
 }
 
-- (IBAction)AcceptImage:(id)sender {
-    
-}
-
-- (IBAction)RetakeImage:(id)sender {
-    
-}
-
-- (void)viewDidLoad {
+- (void) viewDidLoad{
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    [self popCameraUI];
+}
+
+- (BOOL) startCameraControllerFromViewController: (UIViewController*) controller
+                                   usingDelegate: (id <UIImagePickerControllerDelegate,
+                                                   UINavigationControllerDelegate>) delegate {
+    
+    if (([UIImagePickerController isSourceTypeAvailable:
+          UIImagePickerControllerSourceTypeCamera] == NO)
+        || (delegate == nil)
+        || (controller == nil))
+        return NO;
+    
+    UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
+    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    // Displays a control that allows the user to choose picture or
+    // movie capture, if both are available:
+    cameraUI.mediaTypes =
+    [UIImagePickerController availableMediaTypesForSourceType:
+     UIImagePickerControllerSourceTypeCamera];
+    
+    cameraUI.allowsEditing = NO;
+    cameraUI.delegate = delegate;
+    
+    [controller presentViewController:cameraUI animated:YES completion:NULL];
+    
+    return YES;
+}
+
+-(void) popCameraUI {
+    
+    [self startCameraControllerFromViewController: self
+                                    usingDelegate: self];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +72,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)retakeImage:(id)sender {
 
+}
+
+- (IBAction)acceptImage:(id)sender {
+
+}
 
 @end
