@@ -110,25 +110,21 @@
     }
     
     return YES;
-
-- (IBAction)acceptImage:(id)sender {
-
 }
 
 // For responding to the user tapping Cancel.
 - (void) imagePickerControllerDidCancel: (UIImagePickerController *) picker {
     
-    [[picker parentViewController] dismissModalViewControllerAnimated: YES];
-
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-    [self dismissModalViewControllerAnimated:YES];  
+    [self dismissViewControllerAnimated:YES completion:nil];
     
     UIImage *capturedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-    ImageView.image = capturedImage;
+    self.ImageView.image = capturedImage;
 }
 
 @end
