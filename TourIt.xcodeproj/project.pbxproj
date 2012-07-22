@@ -60,6 +60,7 @@
 		37EE353015BB9ECD000A7178 /* FuturaStd-LightOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37EE351A15BB9ECD000A7178 /* FuturaStd-LightOblique.otf */; };
 		37EE353115BB9ECD000A7178 /* FuturaStd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37EE351B15BB9ECD000A7178 /* FuturaStd-Medium.otf */; };
 		37EE353215BB9ECD000A7178 /* FuturaStd-MediumOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37EE351C15BB9ECD000A7178 /* FuturaStd-MediumOblique.otf */; };
+		A3512C9515BC6C33003E9789 /* TIPoiPin.m in Sources */ = {isa = PBXBuildFile; fileRef = A3512C9415BC6C33003E9789 /* TIPoiPin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,8 @@
 		37EE351A15BB9ECD000A7178 /* FuturaStd-LightOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaStd-LightOblique.otf"; sourceTree = "<group>"; };
 		37EE351B15BB9ECD000A7178 /* FuturaStd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaStd-Medium.otf"; sourceTree = "<group>"; };
 		37EE351C15BB9ECD000A7178 /* FuturaStd-MediumOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaStd-MediumOblique.otf"; sourceTree = "<group>"; };
+		A3512C9315BC6C33003E9789 /* TIPoiPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPoiPin.h; sourceTree = "<group>"; };
+		A3512C9415BC6C33003E9789 /* TIPoiPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPoiPin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +247,8 @@
 			children = (
 				3764052015BB336000C8FA8E /* TIMapController.h */,
 				3764052115BB336000C8FA8E /* TIMapController.m */,
+				A3512C9315BC6C33003E9789 /* TIPoiPin.h */,
+				A3512C9415BC6C33003E9789 /* TIPoiPin.m */,
 				376404F715BB2D0700C8FA8E /* TIAppDelegate.h */,
 				376404F815BB2D0700C8FA8E /* TIAppDelegate.m */,
 				376404FA15BB2D0700C8FA8E /* MainStoryboard.storyboard */,
@@ -441,6 +446,7 @@
 				3764056215BB460000C8FA8E /* TIPointOfInterest.m in Sources */,
 				378F380115BBA6F6004C5508 /* TITags.m in Sources */,
 				378F380915BC7094004C5508 /* TISwipeDownGestureRecognizer.m in Sources */,
+				A3512C9515BC6C33003E9789 /* TIPoiPin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

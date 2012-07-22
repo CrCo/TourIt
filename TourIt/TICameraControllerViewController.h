@@ -22,6 +22,7 @@
 
 @property (nonatomic, weak) id<TICameraControllerViewControllerDelegate> delegate;
 @property (nonatomic, strong) TIPointOfInterest *poi;
+@property (strong, nonatomic) UIImage *image;
 
 - (void) loadGroups;
 

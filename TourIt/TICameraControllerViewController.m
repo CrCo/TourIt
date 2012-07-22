@@ -13,13 +13,14 @@
 
 - (IBAction)textComplete:(id)sender;
 
-@property (strong, nonatomic) IBOutlet UIImageView *ImageView;
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextView *detailsField;
 @property (nonatomic, strong) NSArray *potentialGroups;
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *ImageView;
 - (IBAction)groupSelectDone:(id)sender;
+-(IBAction)retakeImage:(id)sender;
 
 @end
 
@@ -39,6 +40,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.ImageView.image = self.image;
     [self.titleField becomeFirstResponder];
     [self.searchField becomeFirstResponder];
 }
@@ -108,13 +110,6 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    UIImage *capturedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    UIGraphicsBeginImageContext(CGSizeMake(640, 960));
-    [capturedImage drawInRect: CGRectMake(0, 0, 640, 960)];
-    UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.ImageView.image = smallImage;
-    self.poi.image = smallImage;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -144,6 +139,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.potentialGroups count];
+}
+
+-(IBAction)retakeImage:(id)sender {
+    [self.delegate cameraDidCancel:self];
 }
 
 - (IBAction)groupSelectDone:(id)sender {

@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIImagePickerController *cameraUI;
+@property (nonatomic, strong) UIImage *image;
 - (IBAction)handlePan:(id)sender;
 - (IBAction)openCamera:(id)sender;
 
@@ -36,26 +37,38 @@
         self.manager = [[CLLocationManager alloc] init];
         self.manager.delegate = self;
         [self.manager startUpdatingLocation];
-        
-        if ([UIImagePickerController isSourceTypeAvailable:
-              UIImagePickerControllerSourceTypeCamera])
-        {
-            self.cameraUI = [[UIImagePickerController alloc] init];
-            self.cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
-            
-            // Displays a control that allows the user to choose picture or
-            // movie capture, if both are available:
-            self.cameraUI.allowsEditing = NO;
-            self.cameraUI.delegate = self;
-        }
-        else
-        {
-            self.cameraUI = [[UIImagePickerController alloc] init];
-            self.cameraUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-            self.cameraUI.delegate = self;
-        }
+        [self instantiateNewPicker];
     }
     return self;
+}
+
+- (void) instantiateNewPicker
+{
+    [self.cameraUI.view removeFromSuperview];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:
+         UIImagePickerControllerSourceTypeCamera])
+    {
+        self.cameraUI = [[UIImagePickerController alloc] init];
+        self.cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+        // Displays a control that allows the user to choose picture or
+        // movie capture, if both are available:
+        self.cameraUI.allowsEditing = NO;
+        self.cameraUI.delegate = self;
+    }
+    else
+    {
+        self.cameraUI = [[UIImagePickerController alloc] init];
+        self.cameraUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        self.cameraUI.delegate = self;
+    }
+    
+    if (self.isViewLoaded)
+    {
+        self.cameraUI.view.transform = CGAffineTransformMakeTranslation(0, -self.cameraUI.view.frame.size.height);
+        [self.view addSubview:self.cameraUI.view];
+    }
 }
 
 - (void) setPopularPOIs: (NSArray *) pois
@@ -84,14 +97,25 @@
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         self.cameraUI.view.transform = CGAffineTransformMakeTranslation(0, -self.cameraUI.view.frame.size.height);
+    } completion:^(BOOL finished) {
+        [self instantiateNewPicker];
     }];
+    
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    UIImage *capturedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIGraphicsBeginImageContext(CGSizeMake(640, 960));
+    [capturedImage drawInRect: CGRectMake(0, 0, 640, 960)];
+    self.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
     [self performSegueWithIdentifier:@"poi" sender:self];
+    
+    [self instantiateNewPicker];
 }
 
 - (void)didReceiveMemoryWarning
@@ -139,14 +163,16 @@
 {
     if ([segue.destinationViewController isKindOfClass:[TIMapController class]])
     {
-        TIPointOfInterest *selectedPOI = self.populars[[self.tableView indexPathForSelectedRow].row];
+        PFObject *selectedPOI = self.populars[[self.tableView indexPathForSelectedRow].row];
         [segue.destinationViewController setDelegate:self];
         [segue.destinationViewController setSelectedPOI:selectedPOI];
+        
     }
-    else if ([segue.identifier isEqualToString:@"camera"])
+    else if ([segue.identifier isEqualToString:@"poi"])
     {
         ((TICameraControllerViewController *)((UINavigationController *)segue.destinationViewController).topViewController).delegate = self;
         ((TICameraControllerViewController *)((UINavigationController *)segue.destinationViewController).topViewController).poi = [[TIPointOfInterest alloc] init];
+        ((TICameraControllerViewController *)((UINavigationController *)segue.destinationViewController).topViewController).image = self.image;
     }
 }
 
@@ -176,7 +202,7 @@
     {
         NSLog(@"Done with velocity: %f", [sender velocityInView:self.view].y);
                 
-        [UIView animateWithDuration:MIN(-self.cameraUI.view.transform.ty / [sender velocityInView:self.view].y, 1.0) animations:^{
+        [UIView animateWithDuration:MIN(-self.cameraUI.view.transform.ty / [sender velocityInView:self.view].y, 0.3) animations:^{
             self.cameraUI.view.transform = CGAffineTransformIdentity;
         } ];
     }
@@ -190,7 +216,7 @@
 }
 
 - (IBAction)openCamera:(id)sender {
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         self.cameraUI.view.transform = CGAffineTransformIdentity;
     } ];
 }
