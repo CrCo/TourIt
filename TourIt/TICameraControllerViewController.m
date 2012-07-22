@@ -17,12 +17,14 @@
 @property (strong, nonatomic) IBOutlet UIImageView *ImageView;
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextView *detailsField;
+@property (weak, nonatomic) IBOutlet UIView *titleWrapperView;
 
 @end
 
 @implementation TICameraControllerViewController {
     bool cameraHasPopped;
 }
+@synthesize titleWrapperView = _titleWrapperView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -36,6 +38,8 @@
     [super viewDidLoad];
     [self.titleField becomeFirstResponder];
     cameraHasPopped = NO;
+    self.titleWrapperView.layer.borderWidth = 3;
+    self.titleWrapperView.layer.borderColor = [UIColor blackColor].CGColor;
     
 }
 
@@ -110,6 +114,11 @@
     }
     
     return YES;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    textView.text = @"";
 }
 
 // For responding to the user tapping Cancel.

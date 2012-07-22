@@ -152,9 +152,14 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" minimumFontSize="17" text="" id="Bxl-at-bJ2">
+                            <imageView translatesAutoresizingMaskIntoConstraints="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="bgndtexture.jpg" id="fvM-RH-kgd"/>
+                            <view translatesAutoresizingMaskIntoConstraints="NO" alpha="0.50000000000000011" contentMode="scaleToFill" id="hi5-kC-K02">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <textField translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add Title" minimumFontSize="17" clearButtonMode="always" text="" id="Bxl-at-bJ2">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="at6-8o-lhD"/>
+                                    <constraint firstAttribute="width" constant="280" id="de3-Hq-ybv"/>
+                                    <constraint firstAttribute="height" constant="30" id="f6E-RK-Blq"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -164,8 +169,10 @@
                                     <outlet property="delegate" destination="ULu-Jz-xq2" id="9n0-7g-tZV"/>
                                 </connections>
                             </textField>
+                            <view translatesAutoresizingMaskIntoConstraints="NO" alpha="0.50000000000000011" contentMode="scaleToFill" id="JqQ-95-qVA">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <textView translatesAutoresizingMaskIntoConstraints="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="e6b-xq-lp0">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="Vkv-jG-bH6"/>
                                 </constraints>
@@ -176,14 +183,39 @@
                                     <outlet property="delegate" destination="ULu-Jz-xq2" id="McP-MU-FGp"/>
                                 </connections>
                             </textView>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" hasAttributedTitle="NO" lineBreakMode="middleTruncation" id="lzi-KS-5Xd">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Curate this mofo, BITCHEZ">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Bxl-at-bJ2" firstAttribute="leading" secondItem="Se3-09-L0O" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="5YY-dm-ooJ"/>
-                            <constraint firstItem="Bxl-at-bJ2" firstAttribute="top" secondItem="Se3-09-L0O" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Vqc-Zi-s9w"/>
+                            <constraint firstAttribute="trailing" secondItem="JqQ-95-qVA" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="8q4-8f-Ik1"/>
+                            <constraint firstItem="fvM-RH-kgd" firstAttribute="bottom" secondItem="Se3-09-L0O" secondAttribute="bottom" type="default" id="BG3-HI-MBB"/>
+                            <constraint firstItem="JqQ-95-qVA" firstAttribute="bottom" secondItem="e6b-xq-lp0" secondAttribute="bottom" type="default" id="BfF-Gn-tQY"/>
+                            <constraint firstItem="hi5-kC-K02" firstAttribute="top" secondItem="Se3-09-L0O" secondAttribute="top" constant="13" id="EvY-0Y-WZe"/>
+                            <constraint firstItem="fvM-RH-kgd" firstAttribute="trailing" secondItem="Se3-09-L0O" secondAttribute="trailing" type="default" id="KWI-oo-Ama"/>
+                            <constraint firstItem="JqQ-95-qVA" firstAttribute="leading" secondItem="Se3-09-L0O" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Lc2-Nq-PA9"/>
+                            <constraint firstItem="JqQ-95-qVA" firstAttribute="top" secondItem="e6b-xq-lp0" secondAttribute="top" type="default" id="MsI-zi-1RG"/>
+                            <constraint firstItem="Bxl-at-bJ2" firstAttribute="trailing" secondItem="hi5-kC-K02" secondAttribute="trailing" type="default" id="Too-09-23w"/>
+                            <constraint firstItem="JqQ-95-qVA" firstAttribute="top" secondItem="Se3-09-L0O" secondAttribute="top" constant="55" id="Wh7-D1-mOo"/>
+                            <constraint firstAttribute="trailing" secondItem="lzi-KS-5Xd" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Wq1-AV-dJn"/>
+                            <constraint firstItem="hi5-kC-K02" firstAttribute="bottom" secondItem="Bxl-at-bJ2" secondAttribute="bottom" type="default" id="ZyS-5T-Mqr"/>
                             <constraint firstAttribute="trailing" secondItem="e6b-xq-lp0" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="eI9-gQ-kDA"/>
+                            <constraint firstItem="fvM-RH-kgd" firstAttribute="leading" secondItem="Se3-09-L0O" secondAttribute="leading" type="default" id="j0e-rT-W0z"/>
+                            <constraint firstItem="hi5-kC-K02" firstAttribute="top" secondItem="Bxl-at-bJ2" secondAttribute="top" type="default" id="jkO-is-srd"/>
+                            <constraint firstItem="Bxl-at-bJ2" firstAttribute="leading" secondItem="hi5-kC-K02" secondAttribute="leading" type="default" id="li5-sh-IIJ"/>
+                            <constraint firstItem="lzi-KS-5Xd" firstAttribute="leading" secondItem="Se3-09-L0O" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="oEx-51-WTb"/>
                             <constraint firstItem="e6b-xq-lp0" firstAttribute="leading" secondItem="Se3-09-L0O" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="p9I-rb-3SY"/>
-                            <constraint firstItem="e6b-xq-lp0" firstAttribute="top" secondItem="Se3-09-L0O" secondAttribute="top" constant="68" id="tsf-PW-u3w"/>
+                            <constraint firstItem="lzi-KS-5Xd" firstAttribute="top" secondItem="Se3-09-L0O" secondAttribute="top" constant="195" id="pv9-5q-ZEX"/>
+                            <constraint firstItem="fvM-RH-kgd" firstAttribute="top" secondItem="Se3-09-L0O" secondAttribute="top" type="default" id="qmI-20-rJF"/>
+                            <constraint firstItem="hi5-kC-K02" firstAttribute="leading" secondItem="Se3-09-L0O" secondAttribute="leading" constant="31" id="t7N-dc-Iux"/>
                         </constraints>
                     </view>
                     <connections>
@@ -214,6 +246,9 @@
             <point key="canvasLocation" x="271" y="135"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bgndtexture.jpg" width="640" height="940"/>
+    </resources>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
@@ -226,6 +261,7 @@
                 <relationship kind="outlet" name="ImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="detailsField" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="titleField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="titleWrapperView" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="TIMapController" superclassName="UIViewController">
