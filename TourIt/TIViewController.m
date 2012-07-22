@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIImagePickerController *cameraUI;
 - (IBAction)handlePan:(id)sender;
+- (IBAction)openCamera:(id)sender;
 
 @end
 
@@ -46,15 +47,12 @@
             // movie capture, if both are available:
             self.cameraUI.allowsEditing = NO;
             self.cameraUI.delegate = self;
-
         }
         else
         {
             self.cameraUI = [[UIImagePickerController alloc] init];
             self.cameraUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-            
             self.cameraUI.delegate = self;
-
         }
     }
     return self;
@@ -74,9 +72,8 @@
     [query findObjectsInBackgroundWithTarget:self selector:@selector(setPopularPOIs:)];
     
     self.imageView.image = [UIImage animatedImageWithImages:@[[UIImage imageNamed:@"arrow1"], [UIImage imageNamed:@"arrow2"]] duration:2.0];
-        
-    self.cameraUI.view.frame = CGRectApplyAffineTransform(self.cameraUI.view.frame, CGAffineTransformMakeTranslation(0, -self.cameraUI.view.frame.size.height - 20));
 
+    self.cameraUI.view.transform = CGAffineTransformMakeTranslation(0, -self.cameraUI.view.frame.size.height);
     [self.view addSubview:self.cameraUI.view];
 }
 
@@ -89,9 +86,12 @@
 {
     [UIView animateWithDuration:1.0 animations:^{
         self.cameraUI.view.transform = CGAffineTransformMakeTranslation(0, -self.cameraUI.view.frame.size.height);
-    } completion:^(BOOL finished) {
-        self.cameraUI.view.frame = CGRectApplyAffineTransform(self.view.frame, CGAffineTransformMakeTranslation(0, -self.cameraUI.view.frame.size.height - 20));
     }];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [self performSegueWithIdentifier:@"poi" sender:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -175,20 +175,23 @@
     if (sender.state == UIGestureRecognizerStateEnded)
     {
         NSLog(@"Done with velocity: %f", [sender velocityInView:self.view].y);
-        
-        CGFloat remainingPx = self.cameraUI.view.frame.size.height - [sender translationInView:self.view].y;
-        
-        [UIView animateWithDuration:remainingPx / [sender velocityInView:self.view].y animations:^{
-            self.cameraUI.view.transform = CGAffineTransformMakeTranslation(0, self.cameraUI.view.frame.size.height - 20);
-        } completion:^(BOOL finished) {
-            self.cameraUI.view.frame = CGRectMake(0, -20, self.cameraUI.view.frame.size.width, self.cameraUI.view.frame.size.height);
+                
+        [UIView animateWithDuration:MIN(-self.cameraUI.view.transform.ty / [sender velocityInView:self.view].y, 1.0) animations:^{
+            self.cameraUI.view.transform = CGAffineTransformIdentity;
         } ];
     }
     else
     {
         CGPoint translation = [sender translationInView:self.view];
-        NSLog(@"Translation: %f, %f", translation.x, translation.y);
-        self.cameraUI.view.transform = CGAffineTransformMakeTranslation(0, translation.y);
+        NSLog(@"Translation: %f -> %f", self.cameraUI.view.transform.ty, translation.y);
+        self.cameraUI.view.transform = CGAffineTransformMakeTranslation(0, self.cameraUI.view.transform.ty + translation.y);
+        [sender setTranslation:CGPointMake(0, 0) inView:self.view];
     }
+}
+
+- (IBAction)openCamera:(id)sender {
+    [UIView animateWithDuration:1.0 animations:^{
+        self.cameraUI.view.transform = CGAffineTransformIdentity;
+    } ];
 }
 @end

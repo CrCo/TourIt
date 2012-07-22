@@ -54,12 +54,12 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="scF-fX-gOH" kind="modal" id="JDG-Mj-2G0"/>
+                                    <action selector="openCamera:" destination="lKe-Nx-rdm" eventType="touchUpInside" id="sct-Oj-eoh"/>
                                 </connections>
                             </button>
                             <imageView translatesAutoresizingMaskIntoConstraints="NO" userInteractionEnabled="NO" contentMode="scaleToFill" id="EqA-Bc-KdA">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="193" id="dJt-4c-IvW"/>
+                                    <constraint firstAttribute="height" constant="173" id="JlT-c7-3P3"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -67,21 +67,23 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="EqA-Bc-KdA" firstAttribute="leading" secondItem="CDE-Cb-idU" secondAttribute="leading" type="default" id="8Ke-tF-g1D"/>
+                            <constraint firstItem="EqA-Bc-KdA" firstAttribute="top" secondItem="sip-ws-hP3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="EPP-NT-CI6"/>
                             <constraint firstItem="puq-Fh-ct1" firstAttribute="trailing" secondItem="CDE-Cb-idU" secondAttribute="trailing" type="default" id="K1N-bF-jRX"/>
-                            <constraint firstItem="sip-ws-hP3" firstAttribute="leading" secondItem="CDE-Cb-idU" secondAttribute="leading" type="default" id="SE4-sF-krP"/>
+                            <constraint firstItem="EqA-Bc-KdA" firstAttribute="centerX" secondItem="sip-ws-hP3" secondAttribute="centerX" type="default" id="QHJ-eg-ASY"/>
                             <constraint firstItem="puq-Fh-ct1" firstAttribute="leading" secondItem="CDE-Cb-idU" secondAttribute="leading" type="default" id="fV1-Mh-iS2"/>
-                            <constraint firstItem="EqA-Bc-KdA" firstAttribute="top" secondItem="sip-ws-hP3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="nyx-2h-Y8x"/>
+                            <constraint firstItem="sip-ws-hP3" firstAttribute="top" secondItem="CDE-Cb-idU" secondAttribute="top" constant="20" symbolic="YES" type="default" id="nU6-6I-A8q"/>
                             <constraint firstItem="puq-Fh-ct1" firstAttribute="bottom" secondItem="CDE-Cb-idU" secondAttribute="bottom" type="default" id="qSz-9b-bet"/>
                             <constraint firstItem="EqA-Bc-KdA" firstAttribute="trailing" secondItem="CDE-Cb-idU" secondAttribute="trailing" type="default" id="xot-Ma-gzS"/>
-                            <constraint firstItem="sip-ws-hP3" firstAttribute="top" secondItem="CDE-Cb-idU" secondAttribute="top" type="default" id="zOg-xF-3cd"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="1kQ-78-YzN" appends="YES" id="nYt-fG-JTG"/>
                         </connections>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="imageView" destination="EqA-Bc-KdA" id="gAI-wT-oWe"/>
                         <outlet property="tableView" destination="puq-Fh-ct1" id="6zy-03-OoN"/>
+                        <segue destination="scF-fX-gOH" kind="modal" identifier="poi" id="qsN-ql-c7U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qe-UN-v5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -92,7 +94,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="612" y="143"/>
+            <point key="canvasLocation" x="664" y="119"/>
         </scene>
         <!--Map Controller-->
         <scene sceneID="UrW-Dy-XuW">
@@ -432,6 +434,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TIViewController.h"/>
             <relationships>
                 <relationship kind="action" name="handlePan:"/>
+                <relationship kind="action" name="openCamera:"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
