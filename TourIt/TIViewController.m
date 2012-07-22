@@ -83,8 +83,6 @@
     PFQuery *query = [PFQuery queryWithClassName:@"PointOfInterest"];
     query.limit = 100;
     [query findObjectsInBackgroundWithTarget:self selector:@selector(setPopularPOIs:)];
-    
-    self.imageView.image = [UIImage animatedImageWithImages:@[[UIImage imageNamed:@"arrow1"], [UIImage imageNamed:@"arrow2"]] duration:2.0];
 
     self.cameraUI.view.transform = CGAffineTransformMakeTranslation(0, -self.cameraUI.view.frame.size.height);
     [self.view addSubview:self.cameraUI.view];
@@ -136,7 +134,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"map" forIndexPath:indexPath];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"tag" forIndexPath:indexPath];
     cell.textLabel.text = self.populars[indexPath.row][@"title"];
     return cell;
 }
