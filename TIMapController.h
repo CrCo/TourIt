@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "TIPointOfInterest.h"
+#import <MapKit/MapKit.h>
+#import <Parse/Parse.h>
 
 @class TIMapController;
 
@@ -17,9 +19,11 @@
 
 @end
 
-@interface TIMapController : UIViewController
+@interface TIMapController : UIViewController <MKMapViewDelegate> {
 
-@property (nonatomic, strong) TIPointOfInterest *selectedPOI    ;
+}
+
+@property (nonatomic, strong) PFObject *selectedPOI;
 @property (nonatomic, weak) id<TIMapControllerDelegate> delegate;
 
 @end

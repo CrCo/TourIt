@@ -123,10 +123,10 @@
 {
     if ([segue.destinationViewController isKindOfClass:[TIMapController class]])
     {
-        TIPointOfInterest *selectedPOI = self.populars[[self.tableView indexPathForSelectedRow].row];
+        PFObject *selectedPOI = self.populars[[self.tableView indexPathForSelectedRow].row];
         [segue.destinationViewController setDelegate:self];
         [segue.destinationViewController setSelectedPOI:selectedPOI];
-        
+
        
     }
     else if ([segue.identifier isEqualToString:@"camera"])
