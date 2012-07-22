@@ -180,6 +180,11 @@
     
 }
 
+- (void)mapControllerWantsBackPlease:(TIMapController *)controller
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     self.bestGuess = ((CLLocation*)locations.lastObject).coordinate;

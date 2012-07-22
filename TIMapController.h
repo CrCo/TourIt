@@ -16,6 +16,7 @@
 @protocol TIMapControllerDelegate <NSObject>
 
 - (void) mapController: (TIMapController *) controller didSomething: (id) object;
+- (void) mapControllerWantsBackPlease: (TIMapController *) controller;
 
 @end
 
@@ -25,5 +26,6 @@
 
 @property (nonatomic, strong) PFObject *selectedPOI;
 @property (nonatomic, weak) id<TIMapControllerDelegate> delegate;
+- (IBAction)cancelMap:(id)sender;
 
 @end

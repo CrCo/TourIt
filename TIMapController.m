@@ -89,4 +89,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)cancelMap:(id)sender {
+    [self.delegate mapControllerWantsBackPlease:self];
+}
 @end
