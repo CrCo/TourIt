@@ -35,15 +35,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.titleField becomeFirstResponder];
-    cameraHasPopped = NO;
-    
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     
-    if (!cameraHasPopped) {
+    if (self.poi.image == NULL ) {
        [self popCameraUI];
-        cameraHasPopped = YES;
     }
     
 }
@@ -123,8 +120,14 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
     UIImage *capturedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    
-    self.ImageView.image = capturedImage;
+    NSData *before = UIImagePNGRepresentation(capturedImage);
+    UIGraphicsBeginImageContext(CGSizeMake(640, 960));
+    [capturedImage drawInRect: CGRectMake(0, 0, 640, 960)];
+    UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    NSData *after = UIImagePNGRepresentation(smallImage);
+    self.ImageView.image = smallImage;
+    self.poi.image = smallImage;
 }
 
 @end
