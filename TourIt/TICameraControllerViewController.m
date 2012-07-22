@@ -172,12 +172,6 @@
     return 1;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.poi.group = self.potentialGroups[indexPath.row][@"group"];
-        [self.delegate camera:self didCreatePOI:self.poi];
-}
-
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *allText = [textField.text stringByReplacingCharactersInRange:range withString:string];

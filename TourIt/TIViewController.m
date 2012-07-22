@@ -123,12 +123,22 @@
 {
     if ([segue.destinationViewController isKindOfClass:[TIMapController class]])
     {
+        TIPointOfInterest *selectedPOI = self.populars[[self.tableView indexPathForSelectedRow].row];
+        [segue.destinationViewController setDelegate:self];
+        [segue.destinationViewController setSelectedPOI:selectedPOI];
+        
+       
     }
     else if ([segue.identifier isEqualToString:@"camera"])
     {
         ((TICameraControllerViewController *)((UINavigationController *)segue.destinationViewController).topViewController).delegate = self;
         ((TICameraControllerViewController *)((UINavigationController *)segue.destinationViewController).topViewController).poi = [[TIPointOfInterest alloc] init];
     }
+}
+
+- (void)mapController:(TIMapController *)controller didSomething:(id)object
+{
+    
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations

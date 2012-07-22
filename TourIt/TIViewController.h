@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "TICameraControllerViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "TIMapController.h"
 
-@interface TIViewController : UITableViewController <TICameraControllerViewControllerDelegate, CLLocationManagerDelegate>
+@interface TIViewController : UITableViewController <TICameraControllerViewControllerDelegate, CLLocationManagerDelegate, TIMapControllerDelegate>
 
 @end
