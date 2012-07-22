@@ -11,8 +11,9 @@
 
 @implementation TIPointOfInterest
 
-- (void)save
+- (void)save: (void (^)()) block
 {
+    void (^safeCopy)() = [block copy];
     PFObject *object = [PFObject objectWithClassName:@"PointOfInterest"];
     [object setObject:self.title forKey:@"title"];
     [object setObject:self.details forKey:@"description"];
@@ -21,19 +22,28 @@
     
     if (self.image)
     {
-        // Make itty bitty
-        
-        UIGraphicsBeginImageContext(CGSizeMake(640, 960));
-        [self.image drawInRect: CGRectMake(0, 0, 640, 960)];
-        UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
+        NSLog(@"We have an image…");
         // Upload image
-        
-        PFFile *file = [PFFile fileWithData: UIImagePNGRepresentation(smallImage)];
+        NSData *data = UIImagePNGRepresentation(self.image);
+        PFFile *file = [PFFile fileWithData: data];
+        NSLog(@"Starting the upload of %d bytes", data.length);
         [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded)
+            {
+                NSLog(@"File saving succeeded. Bryan sucks");
+            }else {
+                NSLog(@"Saving file bombed because: %@", error.localizedDescription);
+            }
             [object setObject:file forKey:@"picture"];
-            [object saveInBackground];
+            [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded)
+                {
+                    NSLog(@"The main object was saved like a bitch.");
+                }else{
+                    NSLog(@"Saving the main object: %@", error.localizedDescription);
+                }
+                safeCopy();
+            }];
         }];
     }
     else

@@ -36,18 +36,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.titleField becomeFirstResponder];
-    cameraHasPopped = NO;
-    self.titleWrapperView.layer.borderWidth = 3;
-    self.titleWrapperView.layer.borderColor = [UIColor blackColor].CGColor;
-    
+    [self.titleField becomeFirstResponder];    
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     
-    if (!cameraHasPopped) {
+    if (self.poi.image == NULL ) {
        [self popCameraUI];
-        cameraHasPopped = YES;
     }
     
 }
@@ -132,8 +127,12 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
     UIImage *capturedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    
-    self.ImageView.image = capturedImage;
+    UIGraphicsBeginImageContext(CGSizeMake(640, 960));
+    [capturedImage drawInRect: CGRectMake(0, 0, 640, 960)];
+    UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.ImageView.image = smallImage;
+    self.poi.image = smallImage;
 }
 
 @end

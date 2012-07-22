@@ -24,9 +24,11 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        
+        NSLog(@"Location services are %@", [CLLocationManager locationServicesEnabled] ? @"on" : @"Ball-licking piece of shit");
         self.manager = [[CLLocationManager alloc] init];
         self.manager.delegate = self;
-        [self.manager startMonitoringSignificantLocationChanges];
+        [self.manager startUpdatingLocation];
     }
     return self;
 }
@@ -40,10 +42,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     PFQuery *query = [PFQuery queryWithClassName:@"PointOfInterest"];
-    query.limit = 10;
+    query.limit = 100;
     [query findObjectsInBackgroundWithTarget:self selector:@selector(setPopularPOIs:)];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,7 +104,13 @@
 - (void)camera:(TICameraControllerViewController *)controller didCreatePOI:(TIPointOfInterest *)point
 {
     point.location = self.bestGuess;
-    [point save];
+    [point save:^{
+        PFQuery *query = [PFQuery queryWithClassName:@"PointOfInterest"];
+        query.limit = 100;
+        [query findObjectsInBackgroundWithTarget:self selector:@selector(setPopularPOIs:)];
+
+    }];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -116,12 +127,23 @@
     else if ([segue.destinationViewController isKindOfClass:[TICameraControllerViewController class]])
     {
         ((TICameraControllerViewController *)segue.destinationViewController).delegate = self;
+        ((TICameraControllerViewController *) segue.destinationViewController).poi = [[TIPointOfInterest alloc] init];
     }
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     self.bestGuess = ((CLLocation*)locations.lastObject).coordinate;
+    [self.manager stopUpdatingLocation];
 }
 
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"Location manager failed: %@", error);
+}
+
+- (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region
+{
+    NSLog(@"Starting the location manager");
+}
 @end
