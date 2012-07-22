@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *details;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic) CLLocationCoordinate2D location;
+@property (nonatomic) NSString *group;
 
 - (void)save: (void (^)()) block;
 

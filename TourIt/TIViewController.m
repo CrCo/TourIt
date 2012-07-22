@@ -126,8 +126,8 @@
     }
     else if ([segue.destinationViewController isKindOfClass:[TICameraControllerViewController class]])
     {
-        ((TICameraControllerViewController *)segue.destinationViewController).delegate = self;
-        ((TICameraControllerViewController *) segue.destinationViewController).poi = [[TIPointOfInterest alloc] init];
+        ((TICameraControllerViewController *)((UINavigationController *)segue.destinationViewController).topViewController).delegate = self;
+        ((TICameraControllerViewController *)((UINavigationController *)segue.destinationViewController).topViewController).poi = [[TIPointOfInterest alloc] init];
     }
 }
 
