@@ -201,9 +201,15 @@
     {
         NSLog(@"Done with velocity: %f", [sender velocityInView:self.view].y);
                 
-        [UIView animateWithDuration:MIN(-self.cameraUI.view.transform.ty / [sender velocityInView:self.view].y, 0.3) animations:^{
+        if ([sender velocityInView:self.view].y < 0) {
+            [UIView animateWithDuration:MIN(ABS(self.cameraUI.view.transform.ty / [sender velocityInView:self.view].y), 0.3) animations:^{
+                self.cameraUI.view.transform = CGAffineTransformMakeTranslation(0, -self.cameraUI.view.frame.size.height);
+            } ];
+        } else {
+        [UIView animateWithDuration:MIN(ABS(self.cameraUI.view.transform.ty / [sender velocityInView:self.view].y), 0.3) animations:^{
             self.cameraUI.view.transform = CGAffineTransformIdentity;
         } ];
+        }
     }
     else
     {
