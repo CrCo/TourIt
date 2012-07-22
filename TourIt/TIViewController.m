@@ -161,6 +161,7 @@
 
  -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [[self.tableView cellForRowAtIndexPath:self.tableView.indexPathForSelectedRow] setSelected:NO animated:YES];
     if ([segue.destinationViewController isKindOfClass:[TIMapController class]])
     {
         PFObject *selectedPOI = self.populars[[self.tableView indexPathForSelectedRow].row];
