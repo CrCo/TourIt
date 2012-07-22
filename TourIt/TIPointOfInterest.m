@@ -17,7 +17,7 @@
     PFObject *object = [PFObject objectWithClassName:@"PointOfInterest"];
     [object setObject:self.title forKey:@"title"];
     [object setObject:self.details forKey:@"description"];
-    [object setObject:self forKey:@"group"];
+    [object setObject:self.group forKey:@"group"];
 
     [object setObject:[PFGeoPoint geoPointWithLatitude:self.location.latitude longitude:self.location.longitude] forKey:@"location"];
     

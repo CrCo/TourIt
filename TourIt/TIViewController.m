@@ -124,7 +124,7 @@
     if ([segue.destinationViewController isKindOfClass:[TIMapController class]])
     {
     }
-    else if ([segue.destinationViewController isKindOfClass:[TICameraControllerViewController class]])
+    else if ([segue.identifier isEqualToString:@"camera"])
     {
         ((TICameraControllerViewController *)((UINavigationController *)segue.destinationViewController).topViewController).delegate = self;
         ((TICameraControllerViewController *)((UINavigationController *)segue.destinationViewController).topViewController).poi = [[TIPointOfInterest alloc] init];

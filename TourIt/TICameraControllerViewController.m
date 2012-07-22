@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSArray *potentialGroups;
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)groupSelectDone:(id)sender;
 
 @end
 
@@ -173,7 +174,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    self.poi.group = self.potentialGroups[indexPath.row][@"group"];
+        [self.delegate camera:self didCreatePOI:self.poi];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -193,4 +195,8 @@
     return [self.potentialGroups count];
 }
 
+- (IBAction)groupSelectDone:(id)sender {
+    self.poi.group = self.searchField.text;
+    [self.delegate camera:self didCreatePOI:self.poi];
+}
 @end
