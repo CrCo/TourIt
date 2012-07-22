@@ -18,7 +18,7 @@
 
 @end
 
-@interface TICameraControllerViewController : UIViewController <UITextViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface TICameraControllerViewController : UIViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, weak) id<TICameraControllerViewControllerDelegate> delegate;
 @property (nonatomic, strong) TIPointOfInterest *poi;

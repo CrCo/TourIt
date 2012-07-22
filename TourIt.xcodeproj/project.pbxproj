@@ -34,6 +34,9 @@
 		3764056215BB460000C8FA8E /* TIPointOfInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3764056115BB460000C8FA8E /* TIPointOfInterest.m */; };
 		3774064A15BB6B4300D5A643 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3774064915BB6B4300D5A643 /* CoreLocation.framework */; };
 		378F380115BBA6F6004C5508 /* TITags.m in Sources */ = {isa = PBXBuildFile; fileRef = 378F380015BBA6F6004C5508 /* TITags.m */; };
+		378F380515BC65BE004C5508 /* arrow1.png in Resources */ = {isa = PBXBuildFile; fileRef = 378F380315BC65BE004C5508 /* arrow1.png */; };
+		378F380615BC65BE004C5508 /* arrow2.png in Resources */ = {isa = PBXBuildFile; fileRef = 378F380415BC65BE004C5508 /* arrow2.png */; };
+		378F380915BC7094004C5508 /* TISwipeDownGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 378F380815BC7094004C5508 /* TISwipeDownGestureRecognizer.m */; };
 		37EE350515BB87EC000A7178 /* bgndtexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37EE350415BB87EC000A7178 /* bgndtexture.jpg */; };
 		37EE351D15BB9ECD000A7178 /* ClarendonLTStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37EE350715BB9ECD000A7178 /* ClarendonLTStd-Bold.otf */; };
 		37EE351E15BB9ECD000A7178 /* ClarendonLTStd-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37EE350815BB9ECD000A7178 /* ClarendonLTStd-Light.otf */; };
@@ -107,6 +110,10 @@
 		3774064915BB6B4300D5A643 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		378F37FF15BBA6F6004C5508 /* TITags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TITags.h; sourceTree = "<group>"; };
 		378F380015BBA6F6004C5508 /* TITags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TITags.m; sourceTree = "<group>"; };
+		378F380315BC65BE004C5508 /* arrow1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow1.png; sourceTree = "<group>"; };
+		378F380415BC65BE004C5508 /* arrow2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow2.png; sourceTree = "<group>"; };
+		378F380715BC7093004C5508 /* TISwipeDownGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TISwipeDownGestureRecognizer.h; sourceTree = "<group>"; };
+		378F380815BC7094004C5508 /* TISwipeDownGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TISwipeDownGestureRecognizer.m; sourceTree = "<group>"; };
 		37EE350415BB87EC000A7178 /* bgndtexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bgndtexture.jpg; sourceTree = "<group>"; };
 		37EE350715BB9ECD000A7178 /* ClarendonLTStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ClarendonLTStd-Bold.otf"; sourceTree = "<group>"; };
 		37EE350815BB9ECD000A7178 /* ClarendonLTStd-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ClarendonLTStd-Light.otf"; sourceTree = "<group>"; };
@@ -192,6 +199,8 @@
 				37EE351A15BB9ECD000A7178 /* FuturaStd-LightOblique.otf */,
 				37EE351B15BB9ECD000A7178 /* FuturaStd-Medium.otf */,
 				37EE351C15BB9ECD000A7178 /* FuturaStd-MediumOblique.otf */,
+				378F380315BC65BE004C5508 /* arrow1.png */,
+				378F380415BC65BE004C5508 /* arrow2.png */,
 				3774064915BB6B4300D5A643 /* CoreLocation.framework */,
 				3764055F15BB45DE00C8FA8E /* Model */,
 				376404EE15BB2D0700C8FA8E /* TourIt */,
@@ -243,6 +252,8 @@
 				3764051D15BB2DD100C8FA8E /* TICameraControllerViewController.h */,
 				3764051E15BB2DD100C8FA8E /* TICameraControllerViewController.m */,
 				376404EF15BB2D0700C8FA8E /* Supporting Files */,
+				378F380715BC7093004C5508 /* TISwipeDownGestureRecognizer.h */,
+				378F380815BC7094004C5508 /* TISwipeDownGestureRecognizer.m */,
 			);
 			path = TourIt;
 			sourceTree = "<group>";
@@ -364,6 +375,8 @@
 				376404F315BB2D0700C8FA8E /* InfoPlist.strings in Resources */,
 				376404FC15BB2D0700C8FA8E /* MainStoryboard.storyboard in Resources */,
 				37EE350515BB87EC000A7178 /* bgndtexture.jpg in Resources */,
+				378F380515BC65BE004C5508 /* arrow1.png in Resources */,
+				378F380615BC65BE004C5508 /* arrow2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +440,7 @@
 				3764052215BB336000C8FA8E /* TIMapController.m in Sources */,
 				3764056215BB460000C8FA8E /* TIPointOfInterest.m in Sources */,
 				378F380115BBA6F6004C5508 /* TITags.m in Sources */,
+				378F380915BC7094004C5508 /* TISwipeDownGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

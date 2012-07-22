@@ -11,8 +11,6 @@
 
 @interface TICameraControllerViewController ()
 
-- (IBAction)retakeImage:(id)sender;
-
 - (IBAction)textComplete:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIImageView *ImageView;
@@ -45,51 +43,10 @@
     [self.searchField becomeFirstResponder];
 }
 
--(void) viewDidAppear:(BOOL)animated {
-    
-    if (self.poi.image == NULL ) {
-       [self popCameraUI];
-    }
-    
-}
-
-- (BOOL) startCameraControllerFromViewController: (UIViewController*) controller
-                                   usingDelegate: (id <UIImagePickerControllerDelegate,
-                                                   UINavigationControllerDelegate>) delegate {
-    
-    if (([UIImagePickerController isSourceTypeAvailable:
-          UIImagePickerControllerSourceTypeCamera] == NO)
-        || (delegate == nil)
-        || (controller == nil))
-        return NO;
-    
-    UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
-    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    // Displays a control that allows the user to choose picture or
-    // movie capture, if both are available:
-    cameraUI.allowsEditing = NO;
-    cameraUI.delegate = delegate;
-    
-    [controller presentViewController:cameraUI animated:YES completion:NULL];
-    
-    return YES;
-}
-
--(void) popCameraUI {
-    
-    [self startCameraControllerFromViewController: self
-                                    usingDelegate: self];
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)retakeImage:(id)sender {
-    [self popCameraUI];
 }
 
 - (void)loadGroups

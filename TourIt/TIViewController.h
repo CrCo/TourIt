@@ -11,6 +11,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import "TIMapController.h"
 
-@interface TIViewController : UITableViewController <TICameraControllerViewControllerDelegate, CLLocationManagerDelegate, TIMapControllerDelegate>
+@interface TIViewController : UIViewController <TICameraControllerViewControllerDelegate, CLLocationManagerDelegate, TIMapControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
 @end
