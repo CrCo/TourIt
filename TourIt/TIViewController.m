@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIImagePickerController *cameraUI;
 @property (nonatomic, strong) UIImage *image;
+@property (strong, nonatomic) IBOutlet UIButton *cameraIcon;
 - (IBAction)handlePan:(id)sender;
 - (IBAction)openCamera:(id)sender;
 
@@ -77,6 +78,23 @@
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (void) animateAgain: (NSUInteger) left
+{
+    if (left)
+    {
+        [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            self.cameraIcon.transform = CGAffineTransformMakeTranslation(0, -5);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+                self.cameraIcon.transform = CGAffineTransformIdentity;
+            } completion:^(BOOL finished) {
+                [self animateAgain:left - 1];
+            }];
+        }];
+        
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -86,6 +104,7 @@
 
     self.cameraUI.view.transform = CGAffineTransformMakeTranslation(0, -self.cameraUI.view.frame.size.height);
     [self.view addSubview:self.cameraUI.view];
+    [self animateAgain:4];
 }
 
 - (BOOL) gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
@@ -135,7 +154,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"tag" forIndexPath:indexPath];
-    cell.textLabel.text = self.populars[indexPath.row][@"title"];
+    
+    UILabel *label = [cell viewWithTag:1];
+    
+    label.text = [self.populars[indexPath.row][@"title"] uppercaseString];
     return cell;
 }
 

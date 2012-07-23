@@ -16,6 +16,9 @@
     [Parse setApplicationId:@"s10sYMr7FQZeRI5172Vgu8F92I1HlLb79c4aO99q"
                   clientKey:@"DRVeI60rIKULJskl4DVKDyI3DYDYcxpkMHUMhajF"];
     
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
     // Override point for customization after application launch.
     return YES;
 }
